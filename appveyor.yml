@@ -1,5 +1,5 @@
 version: '1.0.{build}'
-image: Visual Studio 2019
+image: Ubuntu2004
 branches:
   only:
   - master
@@ -20,7 +20,7 @@ after_build:
   # For once the build has completed
 artifacts:
  - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/publish'
-   name: Evolve.Migrations.Helper
+   name: evolve-migrations-helper_1.0.{build}
    type: WebDeployPackage
 clone_depth: 1
 test_script:
