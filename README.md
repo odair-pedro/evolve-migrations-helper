@@ -7,9 +7,21 @@ A simple tool for help you to versionate [Evolve](https://github.com/lecaillon/E
 If you think that Evolve is an amazing tool, you will like to use this tool. :blush:
 
 ## Usage
-
+Run the follow command to create a _dataset_ migration:
 ```
-migrations [command] [options]
+migrations add-dataset MyDatasetMigration
+```
+Run the follown command to create a _scheme_ migration:
+```
+migrations add-migration MySchemeMigration
+```
+
+Or run the help command to see all the options:
+```
+migrations --help
+```
+```
+Usage: migrations [command] [options]
 
 Commands:
     add-dataset          Add a new migration file (on path: "./datasets")
@@ -19,3 +31,8 @@ Options:
     -s|--separator       The file name seperator. Default is '__' (Double underscore). Eg: 'v20200530193319__MyMigration.sql'
 
 ```
+
+### Note
+The created file will be configured as embedded resource in your csproj file. 
+
+If you don't like that feature, you are welcome to contribute with this project! :heart:
