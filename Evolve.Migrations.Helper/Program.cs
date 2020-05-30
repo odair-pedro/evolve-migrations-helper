@@ -13,7 +13,9 @@ namespace Evolve.Migrations.Helper
         public static void Main(string[] args)
         {
             if (!ValidateArguments(args))
+            {
                 return;
+            }
 
             var rootPath = GetRootPath(args);
             if (rootPath == default)
@@ -21,7 +23,7 @@ namespace Evolve.Migrations.Helper
                 return;
             }
 
-            var fileName = args[1];
+            var fileName = GetFileName(args);
             if (fileName == default)
             {
                 return;
@@ -81,6 +83,11 @@ namespace Evolve.Migrations.Helper
             }
 
             return rootPath;
+        }
+
+        private static string GetFileName(IReadOnlyList<string> args)
+        {
+            return args[1];
         }
 
         private static string GetFileSeparator(IReadOnlyList<string> args)
