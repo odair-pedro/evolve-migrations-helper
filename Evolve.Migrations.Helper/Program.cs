@@ -87,8 +87,10 @@ namespace Evolve.Migrations.Helper
         {
             const string dfSeparator = "__";
             if (args.Count < 3)
+            {
                 return dfSeparator;
-            
+            }
+
             try
             {
                 return args[2] == "-s" || args[2] == "-separator" ? args[3] : throw new Exception();
