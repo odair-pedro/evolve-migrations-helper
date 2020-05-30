@@ -17,16 +17,22 @@ namespace Evolve.Migrations.Helper
 
             var rootPath = GetRootPath(args);
             if (rootPath == default)
+            {
                 return;
-            
+            }
+
             var fileName = args[1];
             if (fileName == default)
+            {
                 return;
-            
+            }
+
             var fileSeparator = GetFileSeparator(args);
             if (fileSeparator == default)
+            {
                 return;
-                    
+            }
+
             var filePath = CreateFile(rootPath, fileName, fileSeparator);
             
             ChangeCsProjFile(rootPath, filePath);
@@ -46,7 +52,10 @@ namespace Evolve.Migrations.Helper
                 return false;
             }
 
-            if (args.Count >= 2) return true;
+            if (args.Count >= 2)
+            {
+                return true;
+            }
             
             Console.WriteLine("Invalid command.");           
             PrintHelpMessage();
@@ -106,10 +115,11 @@ namespace Evolve.Migrations.Helper
             }
 
             var filePath = Path.Combine(dir, $"v{DateTime.Now:yyyyMMddHHmmss}{fileSeparator}{fileName}.sql");
-            using (var _ = new StreamWriter(filePath, true, Encoding.UTF8))
+            using (var file = new StreamWriter(filePath, true, Encoding.UTF8))
             {
+                file.Flush();
             }
-
+            
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"The file '{filePath}' has created sucessfully.");
             Console.ResetColor();
@@ -121,7 +131,9 @@ namespace Evolve.Migrations.Helper
             var projPath = Path.GetDirectoryName(filePath.Replace(rootPath, string.Empty));
             var projFile = Directory.GetFiles(projPath, "*.csproj").FirstOrDefault();
             if (projFile == default)
+            {
                 return;
+            }
 
             var xml = new XmlDocument();
             xml.Load(projFile);
