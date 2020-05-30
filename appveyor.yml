@@ -19,7 +19,7 @@ build_script:
 after_build:
   # For once the build has completed
 artifacts:
- - path: './Evolve.Migrations.Helper/bin/Debug/netcoreapp3.1/publish'
+ - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/publish'
    name: WebSite
    type: WebDeployPackage
 clone_depth: 1
