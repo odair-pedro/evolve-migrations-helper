@@ -7,11 +7,15 @@ A simple tool for help you to versionate [Evolve](https://github.com/lecaillon/E
 If you think that Evolve is an amazing tool, you will like to use this helper. :blush:
 
 ## Usage
-Run the follow command to create a _dataset_ migration:
+
+### Windows
+
+Extract the `evolve-migrations-helper_win-x64.zip` file in your Evolve project's root path and run the follow command to create a _dataset_ migration:
 ```
 migrations add-dataset MyDatasetMigration
 ```
-Run the follown command to create a _scheme_ migration:
+
+Or run the follown command to create a _scheme_ migration:
 ```
 migrations add-migration MySchemeMigration
 ```
@@ -19,6 +23,38 @@ migrations add-migration MySchemeMigration
 Or run the help command to see all the options:
 ```
 migrations --help
+```
+```
+Usage: migrations [command] [options]
+
+Commands:
+    add-dataset          Add a new migration file (on path: "./datasets")
+    add-migration        Add a new migration file (on path: "./migrations")
+
+Options:
+    -s|--separator       The file name seperator. Default is '__' (Double underscore). Eg: 'v20200530193319__MyMigration.sql'
+
+```
+
+### Linux
+Extract the `evolve-migrations-helper_linux-x64.zip` file in your Evolve project's root path and run the follow command:
+```
+chmod +x migrations
+```
+
+And then run the follow command to create a _dataset_ migration:
+```
+./migrations add-dataset MyDatasetMigration
+```
+
+Or run the follown command to create a _scheme_ migration:
+```
+./migrations add-migration MySchemeMigration
+```
+
+Or run the help command to see all the options:
+```
+./migrations --help
 ```
 ```
 Usage: migrations [command] [options]
