@@ -35,4 +35,4 @@ Options:
 ### Note
 The created file will be configured as embedded resource in your csproj file. 
 
-If you don't like that behavior, you are welcome to contribute with this project! :heart:
+If you don't like that behavior, are welcome to contribute with this project! :heart:
