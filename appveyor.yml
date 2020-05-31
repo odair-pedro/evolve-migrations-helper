@@ -1,26 +1,27 @@
 version: '1.0.{build}'
 image: 
-  - Visual Studio 2019
+  # - Visual Studio 2019
   - Ubuntu
 branches:
   only:
   - master
 init:
   # Good practise, because Windows line endings are different from Unix/Linux ones
-  - cmd: git config --global core.autocrlf true
+  # - cmd: git config --global core.autocrlf true
   - sh: git config --global core.autocrlf true
 install:
   # Install repo specific stuff here
 before_build:
   # Display .NET Core version
   # - cmd: dotnet --version
-  # - sh: dotnet --version
+  - sh: dotnet --version
   # Display minimal restore text
   # - cmd: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
-  # - sh: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
+  - sh: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
 build_script:
   # output will be in ./src/bin/debug/netcoreapp1.1/publish
-  - cmd: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r win-x64 --no-self-contained
+  # - cmd: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r win-x64 --no-self-contained
+  - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r win-x64 --no-self-contained
   - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r linux-x64 --no-self-contained
 after_build:
   # For once the build has completed
