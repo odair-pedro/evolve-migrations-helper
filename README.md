@@ -4,7 +4,7 @@
 
 A simple tool for help you to versionate [Evolve](https://github.com/lecaillon/Evolve) migrations.
 
-If you think that Evolve is an amazing tool, you will like to use this tool. :blush:
+If you think that Evolve is an amazing tool, you will like to use this helper. :blush:
 
 ## Usage
 Run the follow command to create a _dataset_ migration:
