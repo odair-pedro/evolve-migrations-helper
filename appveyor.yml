@@ -13,24 +13,24 @@ install:
   # Install repo specific stuff here
 before_build:
   # Display .NET Core version
-  - cmd: dotnet --version
-  - sh: dotnet --version
+  # - cmd: dotnet --version
+  # - sh: dotnet --version
   # Display minimal restore text
-  - cmd: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
-  - sh: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
+  # - cmd: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
+  # - sh: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
 build_script:
   # output will be in ./src/bin/debug/netcoreapp1.1/publish
-  - cmd: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -o ./Evolve.Migrations.Helper/bin/publish/win
-  - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -o ./Evolve.Migrations.Helper/bin/publish/linux
+  - cmd: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r win-x64 --no-self-contained
+  - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r linux-x64 --no-self-contained
 after_build:
   # For once the build has completed
 artifacts:
- - path: './Evolve.Migrations.Helper/bin/publish/win' 
-   name: evolve-migrations-helper-win
+ - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/win-x64/publish' 
+   name: evolve-migrations-helper_win-x64
    type: WebDeployPackage
-   
- - path: './Evolve.Migrations.Helper/bin/publish/linux'
-   name: evolve-migrations-helper-linux
+
+ - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/linux-x64/publish'
+   name: evolve-migrations-helper_linux-x64
    type: WebDeployPackage
 clone_depth: 1
 test_script:
