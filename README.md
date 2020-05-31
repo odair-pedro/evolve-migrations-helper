@@ -36,3 +36,6 @@ Options:
 The created file will be configured as embedded resource in your csproj file. 
 
 If you don't like that behavior, are welcome to contribute with this project! :heart:
+
+## Download
+The latest version can be found [here](https://github.com/odair-pedro/evolve-migrations-helper/releases).
