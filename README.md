@@ -15,7 +15,7 @@ Extract the `evolve-migrations-helper_win-x64.zip` file in your Evolve project's
 migrations add-dataset MyDatasetMigration
 ```
 
-Or run the follown command to create a _scheme_ migration:
+Or run the follow command to create a _scheme_ migration:
 ```
 migrations add-migration MySchemeMigration
 ```
@@ -47,7 +47,7 @@ And then run the follow command to create a _dataset_ migration:
 ./migrations add-dataset MyDatasetMigration
 ```
 
-Or run the follown command to create a _scheme_ migration:
+Or run the follow command to create a _scheme_ migration:
 ```
 ./migrations add-migration MySchemeMigration
 ```
