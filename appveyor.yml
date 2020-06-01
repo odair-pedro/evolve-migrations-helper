@@ -30,11 +30,11 @@ after_build:
   # For once the build has completed
 artifacts:
  - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/win-x64/publish' 
-   name: evolve-migrations-helper_win-x64
+   name: evolve-migrations-helper_{version}_win-x64
    type: WebDeployPackage
 
  - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/linux-x64/publish'
-   name: evolve-migrations-helper_linux-x64
+   name: evolve-migrations-helper_{version}_linux-x64
    type: WebDeployPackage
 clone_depth: 1
 test_script:
