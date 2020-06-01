@@ -26,6 +26,7 @@ build_script:
   # output will be in ./src/bin/debug/netcoreapp1.1/publish
   - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r win-x64 --no-self-contained
   - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r linux-x64 --no-self-contained
+  - sh: "echo Building version:%appveyor_build_version%"
 after_build:
   # For once the build has completed
 artifacts:
