@@ -23,9 +23,11 @@ after_build:
 artifacts:
  - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/win-x64/publish' 
    name: evolve-migrations-helper_win-x64.zip
+   type: WebDeployPackage
 
  - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/linux-x64/publish'
    name: evolve-migrations-helper_linux-x64.tar.gz
+   type: WebDeployPackage
 clone_depth: 1
 test_script:
   # restore packages for our unit tests
