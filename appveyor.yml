@@ -7,6 +7,8 @@ branches:
 init:
   # Good practise, because Windows line endings are different from Unix/Linux ones
   - sh: git config --global core.autocrlf true
+  - sh: "set appVeyorBuildVersion=%appveyor_build_version%\necho appVeyorBuildVersion:%appVeyorBuildVersion% \n\nset branch=%APPVEYOR_REPO_BRANCH%\necho branch:%branch%\n\nset gitVersion=%branch:~-3%\necho gitversion:%gitVersion%\n\nset newVersion=%gitVersion%.%APPVEYOR_BUILD_NUMBER%\necho %newVersion%\n\n"
+  - sh: appveyor UpdateBuild -Version "%newVersion%"
 install:
   # Install repo specific stuff here
 dotnet_csproj:
