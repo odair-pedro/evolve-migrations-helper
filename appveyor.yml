@@ -7,8 +7,6 @@ branches:
 init:
   # Good practise, because Windows line endings are different from Unix/Linux ones
   - sh: git config --global core.autocrlf true
-  - sh: "set appVeyorBuildVersion=%appveyor_build_version%\necho appVeyorBuildVersion:%appVeyorBuildVersion% \n\nset branch=%APPVEYOR_REPO_BRANCH%\necho branch:%branch%\n\nset gitVersion=%branch:~-3%\necho gitversion:%gitVersion%\n\nset newVersion=%gitVersion%.%APPVEYOR_BUILD_NUMBER%\necho %newVersion%\n\n"
-  - sh: appveyor UpdateBuild -Version "%newVersion%"
 install:
   # Install repo specific stuff here
 dotnet_csproj:
@@ -28,16 +26,15 @@ build_script:
   # output will be in ./src/bin/debug/netcoreapp1.1/publish
   - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r win-x64 --no-self-contained
   - sh: dotnet publish -c Release ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj -f netcoreapp3.1 -r linux-x64 --no-self-contained
-  - sh: "echo Building version:%appveyor_build_version%"
 after_build:
   # For once the build has completed
 artifacts:
  - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/win-x64/publish' 
-   name: evolve-migrations-helper_$(version)_win-x64
+   name: evolve-migrations-helper_win-x64
    type: WebDeployPackage
 
  - path: './Evolve.Migrations.Helper/bin/Release/netcoreapp3.1/linux-x64/publish'
-   name: 'evolve-migrations-helper_{version}_linux-x64'
+   name: 'evolve-migrations-helper_linux-x64'
    type: WebDeployPackage
 clone_depth: 1
 test_script:
