@@ -168,7 +168,7 @@ namespace Evolve.Migrations.Helper
 
             var nodeItens = nodeProject.SelectNodes("//ItemGroup");
             var nodeItem = nodeItens[^1];
-            var nodeNone = xml.CreateElement("None");
+            var nodeNone = xml.CreateElement("EmbeddedResource");
             nodeNone.SetAttribute("Update", Path.Combine(rootPath, Path.GetFileName(filePath)));
             var nodeCopy = xml.CreateElement("CopyToOutputDirectory");
             nodeCopy.InnerText = "Always";
