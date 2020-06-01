@@ -12,6 +12,12 @@ namespace Evolve.Migrations.Helper
     {
         public static void Main(string[] args)
         {
+            if (args.Contains("--version"))
+            {
+                PrintHeaderMessage();
+                return;
+            }
+            
             if (!ValidateArguments(args))
             {
                 return;
@@ -44,8 +50,8 @@ namespace Evolve.Migrations.Helper
         {
             if (args.Count == 0 || args[0] == "--help")
             {
-                Console.WriteLine("Evolve Migrations Helper\r\n");
-                Console.WriteLine($"Usage: {Assembly.GetExecutingAssembly().GetName().Name} [command] [options]\r\n");
+                PrintHeaderMessage();
+                Console.WriteLine($"\r\nUsage: {Assembly.GetExecutingAssembly().GetName().Name} [command] [options]\r\n");
                 Console.WriteLine("Commands:");
                 Console.WriteLine($"    {"add-dataset".PadRight(20, ' ')} Add a new migration file (on path: \"./datasets\")");
                 Console.WriteLine($"    {"add-migration".PadRight(20, ' ')} Add a new migration file (on path: \"./migrations\")\r\n");
@@ -108,6 +114,12 @@ namespace Evolve.Migrations.Helper
                 PrintHelpMessage();
                 return default;
             }
+        }
+
+        private static void PrintHeaderMessage()
+        {
+            Console.WriteLine("Evolve Migrations Helper");
+            Console.WriteLine($"Version: {Assembly.GetExecutingAssembly().GetName().Version}");
         }
 
         private static void PrintHelpMessage()
