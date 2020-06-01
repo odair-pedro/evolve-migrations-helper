@@ -9,17 +9,9 @@ init:
   - sh: git config --global core.autocrlf true
 install:
   # Install repo specific stuff here
-# enable patching of AssemblyInfo.* files
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "1.0.{build}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
-# .NET Core `*.*proj` files patching:
 dotnet_csproj:
   patch: true
-  file: '**\*.csproj'
+  file: '**\Evolve.Migrations.Helper.csproj'
   version: '{version}'
   version_prefix: '{version}'
   package_version: '{version}'
@@ -28,6 +20,7 @@ dotnet_csproj:
   informational_version: '{version}'
 before_build:
   # Display .NET Core version
+  - sh: 'echo $(appveyor_build_version)'
   - sh: dotnet --list-sdks
   # Display minimal restore text
   - sh: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj
