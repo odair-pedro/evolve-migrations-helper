@@ -11,12 +11,13 @@ install:
   # Install repo specific stuff here
 dotnet_csproj:
   patch: true
-  file: './Evolve.Migrations.Helper/Evolve.Migrations.Helper.csproj'
+  file: '**\Evolve.Migrations.Helper.csproj'
   version: '{version}'
   package_version: '{version}'
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
+
 before_build:
   # Display .NET Core version
   - sh: dotnet --version
