@@ -17,7 +17,6 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-
 before_build:
   # Display .NET Core version
   - sh: dotnet --version
