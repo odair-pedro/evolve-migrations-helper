@@ -120,6 +120,8 @@ namespace Evolve.Migrations.Helper
         {
             Console.WriteLine("Evolve Migrations Helper");
             Console.WriteLine($"Version: {Assembly.GetExecutingAssembly().GetName().Version}");
+            Console.WriteLine($"Version: {Assembly.GetEntryAssembly()?.GetName().Version}");
+            Console.WriteLine($"Version: {typeof(Program).Assembly.GetName().Version}");
         }
 
         private static void PrintHelpMessage()

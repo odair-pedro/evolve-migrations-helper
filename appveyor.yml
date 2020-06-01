@@ -9,10 +9,19 @@ init:
   - sh: git config --global core.autocrlf true
 install:
   # Install repo specific stuff here
+# enable patching of AssemblyInfo.* files
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "1.0.{build}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
+# .NET Core `*.*proj` files patching:
 dotnet_csproj:
   patch: true
-  file: '**\Evolve.Migrations.Helper.csproj'
+  file: '**\*.csproj'
   version: '{version}'
+  version_prefix: '{version}'
   package_version: '{version}'
   assembly_version: '{version}'
   file_version: '{version}'
