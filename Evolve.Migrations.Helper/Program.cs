@@ -173,12 +173,17 @@ namespace Evolve.Migrations.Helper
             var nodeItens = nodeProject.SelectNodes("//ItemGroup");
             var nodeItem = nodeItens[^1];
             var nodeNone = xml.CreateElement("EmbeddedResource");
-            nodeNone.SetAttribute("Update", Path.Combine(rootPath, Path.GetFileName(filePath)));
+            nodeNone.SetAttribute("Include", AdjustPathToIncludeOnCsProj(rootPath, filePath));
             var nodeCopy = xml.CreateElement("CopyToOutputDirectory");
             nodeCopy.InnerText = "Always";
             nodeNone.AppendChild(nodeCopy);
             nodeItem.AppendChild(nodeNone);
             xml.Save(projFile);
+        }
+
+        private static string AdjustPathToIncludeOnCsProj(string rootPath, string filePath)
+        {
+            return $"{rootPath.Replace('/', '\\')}\\{Path.GetFileName(filePath)}";
         }
     }
 }
