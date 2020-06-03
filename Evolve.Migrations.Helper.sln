@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolve.Migrations.Helper", "Evolve.Migrations.Helper\Evolve.Migrations.Helper.csproj", "{2F6073C3-6FFB-4B5C-9D5E-DA222FE5C914}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolve.Migrations.Helper.Tests", "Evolve.Migrations.Helper.Tests\Evolve.Migrations.Helper.Tests.csproj", "{DFF67BB6-1070-4BA9-B76E-67EC990379F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2F6073C3-6FFB-4B5C-9D5E-DA222FE5C914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F6073C3-6FFB-4B5C-9D5E-DA222FE5C914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F6073C3-6FFB-4B5C-9D5E-DA222FE5C914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF67BB6-1070-4BA9-B76E-67EC990379F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF67BB6-1070-4BA9-B76E-67EC990379F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF67BB6-1070-4BA9-B76E-67EC990379F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF67BB6-1070-4BA9-B76E-67EC990379F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
