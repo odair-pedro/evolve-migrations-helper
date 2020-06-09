@@ -17,7 +17,7 @@ namespace Evolve.Migrations.Helper.Tests
 
             var buffer = new byte[stream.Length];
             stream.Seek(0, SeekOrigin.Begin);
-            stream.Read(buffer, 0, buffer.Length);
+            var _ = stream.Read(buffer, 0, buffer.Length);
 
             return Encoding.UTF8.GetString(buffer);
         }
