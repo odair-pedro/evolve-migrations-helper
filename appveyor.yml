@@ -41,7 +41,7 @@ artifacts:
 clone_depth: 1
 test_script:
   - sh: dotnet restore ./Evolve.Migrations.Helper.Tests/Evolve.Migrations.Helper.Tests.csproj
-  - sh: dotnet test
+  - sh: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput='./'
 on_finish :
   # any cleanup in here
 deploy: off
