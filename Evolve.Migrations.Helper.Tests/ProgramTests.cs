@@ -4,10 +4,10 @@ namespace Evolve.Migrations.Helper.Tests
 {
     public class ProgramTests
     {
-        private const string HeaderMessage = "Evolve Migrations Helper\nVersion: 1.0.0\n";
+        private const string HeaderMessage = "Evolve Migrations Helper\nVersion: [0-9]+\\.[0-9]+\\.[0-9]+\n";
         
         private const string HelpMessagePattern =
-            "Evolve Migrations Helper\nVersion: 1.0.0\n\n" +
+            "Evolve Migrations Helper\nVersion: [0-9]+\\.[0-9]+\\.[0-9]+\n\n" +
             "Usage: migrations \\[command\\] \\[options\\]\n\n" +
             "Commands:\n" +
             "    add-dataset          Add a new migration file \\(on path: \"\\./datasets\"\\)\n" +
@@ -19,7 +19,7 @@ namespace Evolve.Migrations.Helper.Tests
         public void Main_WithVersionArgs_ShoudPrintVersionMessage()
         {
             var printedText = OutputHelper.ExecuteAndReadOutputText(() => Program.Main(new[] { "--version" }));
-            Assert.Equal(HeaderMessage, printedText);
+            Assert.Matches(HeaderMessage, printedText);
         }
         
         [Fact]
