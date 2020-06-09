@@ -156,6 +156,11 @@ namespace Evolve.Migrations.Helper
 
         private static void ChangeCsProjFile(string rootPath, string filePath)
         {
+            if (rootPath == default || filePath == default)
+            {
+                return;
+            }
+            
             var projPath = Path.GetDirectoryName(filePath.Replace(rootPath, string.Empty));
             var projFile = Directory.GetFiles(projPath, "*.csproj").FirstOrDefault();
             if (projFile == default)
