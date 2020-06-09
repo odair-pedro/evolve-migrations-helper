@@ -40,7 +40,7 @@ artifacts:
    type: WebDeployPackage
 clone_depth: 1
 test_script:
-  - sh: dotnet restore ./Evolve.Migrations.Helper/Evolve.Migrations.Helper.Tests.csproj
+  - sh: dotnet restore ./Evolve.Migrations.Helper.Tests/Evolve.Migrations.Helper.Tests.csproj
   - sh: dotnet test
 on_finish :
   # any cleanup in here
