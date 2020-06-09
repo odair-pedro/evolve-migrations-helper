@@ -1,4 +1,5 @@
 # Evolve Migrations Helper
+[![GitHub version](https://badge.fury.io/gh/odair-pedro%2Fevolve-migrations-helper.svg)](https://badge.fury.io/gh/odair-pedro%2Fevolve-migrations-helper)
 [![Build status](https://ci.appveyor.com/api/projects/status/199ocf60nyj20fa8/branch/master?svg=true)](https://ci.appveyor.com/project/odair-pedro/evolve-migrations-helper/branch/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d26a83a7802345b6808e7719094aa01c)](https://app.codacy.com/manual/odair-pedro/evolve-migrations-helper?utm_source=github.com&utm_medium=referral&utm_content=odair-pedro/evolve-migrations-helper&utm_campaign=Badge_Grade_Dashboard)
 
