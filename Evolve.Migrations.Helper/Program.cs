@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
+
+[assembly:InternalsVisibleTo("Evolve.Migrations.Helper.Tests")]
 
 namespace Evolve.Migrations.Helper
 {
@@ -46,15 +49,15 @@ namespace Evolve.Migrations.Helper
             ChangeCsProjFile(rootPath, filePath);
         }
 
-        private static bool ValidateArguments(IReadOnlyList<string> args)
+        internal static bool ValidateArguments(IReadOnlyList<string> args)
         {
             if (args.Count == 0 || args[0] == "--help")
             {
                 PrintHeaderMessage();
-                Console.WriteLine($"\r\nUsage: {Assembly.GetExecutingAssembly().GetName().Name} [command] [options]\r\n");
+                Console.WriteLine($"\nUsage: {Assembly.GetExecutingAssembly().GetName().Name} [command] [options]\n");
                 Console.WriteLine("Commands:");
                 Console.WriteLine($"    {"add-dataset".PadRight(20, ' ')} Add a new migration file (on path: \"./datasets\")");
-                Console.WriteLine($"    {"add-migration".PadRight(20, ' ')} Add a new migration file (on path: \"./migrations\")\r\n");
+                Console.WriteLine($"    {"add-migration".PadRight(20, ' ')} Add a new migration file (on path: \"./migrations\")\n");
                 Console.WriteLine("Options:");
                 Console.WriteLine($"    {"-s|--separator".PadRight(20, ' ')} The file name seperator. Default is '__' (Double underscore). Eg: 'v{DateTime.Now:yyyyMMddHHmmss}__MyMigration.sql'");
                 return false;
@@ -66,7 +69,7 @@ namespace Evolve.Migrations.Helper
             }
             
             Console.WriteLine("Invalid command.");           
-            PrintHelpMessage();
+            PrintHelpCommandMessage();
             return false;
         }
 
@@ -83,8 +86,8 @@ namespace Evolve.Migrations.Helper
                     rootPath = "db/migrations";
                     break;
                 default:
-                    Console.WriteLine($"{Assembly.GetExecutingAssembly().GetName().Name}: '{command}' is not a valid command.\r\n");           
-                    PrintHelpMessage();
+                    Console.WriteLine($"{Assembly.GetExecutingAssembly().GetName().Name}: '{command}' is not a valid command.\n");           
+                    PrintHelpCommandMessage();
                     return default;
             }
 
@@ -111,7 +114,7 @@ namespace Evolve.Migrations.Helper
             catch
             {
                 Console.WriteLine("Invalid options.");           
-                PrintHelpMessage();
+                PrintHelpCommandMessage();
                 return default;
             }
         }
@@ -126,7 +129,7 @@ namespace Evolve.Migrations.Helper
             }
         }
 
-        private static void PrintHelpMessage()
+        private static void PrintHelpCommandMessage()
         {
             Console.WriteLine($"Run '{Assembly.GetExecutingAssembly().GetName().Name} --help' for usage.");
         }
@@ -153,6 +156,11 @@ namespace Evolve.Migrations.Helper
 
         private static void ChangeCsProjFile(string rootPath, string filePath)
         {
+            if (rootPath == default || filePath == default)
+            {
+                return;
+            }
+            
             var projPath = Path.GetDirectoryName(filePath.Replace(rootPath, string.Empty));
             var projFile = Directory.GetFiles(projPath, "*.csproj").FirstOrDefault();
             if (projFile == default)
